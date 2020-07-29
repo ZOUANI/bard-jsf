@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br />
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <br />
+        <h:link outcome="/compte/List" value="Show All Compte Items"/>
+        <br />
+        <h:link outcome="/operation/List" value="Show All Operation Items"/>
+        <br />
+        <h:link outcome="/typeOperation/List" value="Show All TypeOperation Items"/>
+
+
+
+        <h:form id="myForm">
+            <h1><h:outputText value="INIT BD"/></h1>
+            <p:commandButton actionListener="#{compteController.initBd()}" update="mydata" value="Initialiser BD"></p:commandButton>
+            <p:commandButton actionListener="#{compteController.deleteAll()}" update=":myForm:mydata" value="Delete BD"></p:commandButton>
+
+
+            <h1><h:outputText value="List"/></h1>
+            <p:dataTable value="#{compteController.items}" var="item" id="mydata">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Rib"/>
+                    </f:facet>
+                    <h:outputText value="#{item.rib}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Solde"/>
+                    </f:facet>
+                    <h:outputText value="#{item.solde}"/>
+                </p:column>
+
+            </p:dataTable>
+
+
+
+        </h:form>
+
+    </h:body>
+
+
+
+</html>
+

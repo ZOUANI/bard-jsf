@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TypeOperationCreateDlg" widgetVar="TypeOperationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTypeOperationTitle}">
+            <h:form id="TypeOperationCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{typeOperationController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTypeOperationLabel_libelle}" for="libelle" />
+                        <p:inputText id="libelle" value="#{typeOperationController.selected.libelle}" title="#{bundle.CreateTypeOperationTitle_libelle}" />
+                        <p:outputLabel value="#{bundle.CreateTypeOperationLabel_code}" for="code" />
+                        <p:inputText id="code" value="#{typeOperationController.selected.code}" title="#{bundle.CreateTypeOperationTitle_code}" />
+                        <p:outputLabel value="#{bundle.CreateTypeOperationLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{typeOperationController.selected.id}" title="#{bundle.CreateTypeOperationTitle_id}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{typeOperationController.create}" value="#{bundle.Save}" update="display,:TypeOperationListForm:datalist,:growl" oncomplete="handleSubmit(args,'TypeOperationCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TypeOperationCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
